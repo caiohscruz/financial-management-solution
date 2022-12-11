@@ -14,13 +14,19 @@ namespace FinantialManager.Domain
         public string Name { get { return _name; } }
 
         private double _balance { get; set; }
-        public double Balance { get; }
+        public double Balance { get { return _balance; } }
 
         public Account(string id, string name )
         {
-            Id = id; // change to UUID 
+            Id = id;
             _name = name;
             _balance = 0;
+        }
+        public Account(string id, string name, double balance)
+        {
+            Id = id;
+            _name = name;
+            _balance = balance;
         }
 
         public void UpdateName(string newName)
@@ -28,14 +34,14 @@ namespace FinantialManager.Domain
             _name = newName;
         }
 
-        public void Credit(double value)
+        public void Deposit(double amount)
         {
-            _balance += value;
+            _balance += amount;
         }
 
-        public void Debit(double value)
+        public void Withdraw(double amount)
         {
-            _balance -= value; 
+            _balance -= amount; 
         }
 
     }

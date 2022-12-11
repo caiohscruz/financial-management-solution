@@ -30,14 +30,19 @@ namespace FinantialManager.Domain
             _debt = debt;
         }
 
-        public void DeductDebt (double value)
+        public void UpdateName(string newName)
         {
-            _debt -= value;
+            _name = newName;
         }
 
-        public void IncreaseDebt(double value)
+        public void DeductDebt (double amount)
         {
-            _debt += value;
+            _debt -= amount;
+        }
+
+        public void IncreaseDebt(double amount)
+        {
+            _debt += amount;
         }
 
     }

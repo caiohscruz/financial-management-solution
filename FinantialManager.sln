@@ -5,7 +5,11 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{4998A3C1-2548-4832-9198-591EEB12447D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinantialManager.Domain", "FinantialManager.Domain\FinantialManager.Domain.csproj", "{FF241E62-5965-4365-927A-D5BE189440F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinantialManager.Domain", "FinantialManager.Domain\FinantialManager.Domain.csproj", "{FF241E62-5965-4365-927A-D5BE189440F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4753AFA7-79F8-45FD-9DB3-DD23F35E3562}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinantialManager.DomainTests", "FinantialManager.DomainTests\FinantialManager.DomainTests.csproj", "{7FE0BE10-6DB0-40C7-8140-D81C05E9B891}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +21,17 @@ Global
 		{FF241E62-5965-4365-927A-D5BE189440F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF241E62-5965-4365-927A-D5BE189440F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF241E62-5965-4365-927A-D5BE189440F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FE0BE10-6DB0-40C7-8140-D81C05E9B891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE0BE10-6DB0-40C7-8140-D81C05E9B891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FE0BE10-6DB0-40C7-8140-D81C05E9B891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FE0BE10-6DB0-40C7-8140-D81C05E9B891}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FF241E62-5965-4365-927A-D5BE189440F0} = {4998A3C1-2548-4832-9198-591EEB12447D}
+		{7FE0BE10-6DB0-40C7-8140-D81C05E9B891} = {4753AFA7-79F8-45FD-9DB3-DD23F35E3562}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA88D8C0-40CB-447C-A4A4-1C24B7A42B5F}

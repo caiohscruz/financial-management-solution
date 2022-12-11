@@ -26,7 +26,7 @@ namespace FinantialManager.Domain
             _name = name;
             _total = value;
             _itens = new List<DebitOperation>();
-            _pendent= pendent;
+            _pendent = pendent;
         }
 
         public Invoice(string id, string name, double value, List<DebitOperation> itens, bool pendent)
@@ -48,17 +48,25 @@ namespace FinantialManager.Domain
         {
             // when item is not present
             _itens.Remove(item);
-            _total =- item.Value;
+            _total = -item.Value;
         }
 
         public void PayOff()
         {
-            _pendent= false;
+            if (_pendent == true)
+            {
+                _pendent = false;
+                _origem.DeductDebt(_total);
+            }
         }
 
         public void CancelPayment()
         {
-            _pendent= true;
+            if (_pendent == false)
+            {
+                _pendent = true;
+                _origem.IncreaseDebt(_total);
+            }
         }
     }
 }

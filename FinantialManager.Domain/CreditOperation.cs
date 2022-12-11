@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FinantialManager.Domain
+﻿namespace FinantialManager.Domain
 {
     public class CreditOperation
     {
@@ -13,17 +7,17 @@ namespace FinantialManager.Domain
         private string _name { get; set; }
         public string Name { get { return _name; } }
 
-        private double _value { get; set; }
-        public double Value { get { return _value; } }
+        private double _amount { get; set; }
+        public double Amount { get { return _amount; } }
 
         private Account _target { get; set; }
         public Account Target { get { return _target; } }
 
-        public CreditOperation(string id, string name, double value, Account target)
+        public CreditOperation(string id, string name, double amount, Account target)
         {
             Id = id;
             _name = name;
-            _value = value;
+            _amount = amount;
             _target = target;
         }
 
@@ -32,9 +26,9 @@ namespace FinantialManager.Domain
             _name= name;
         }
 
-        public void UpdateValue(double value)
+        public void UpdateAmount(double amount)
         {
-            _value = value;
+            _amount = amount;
         }
 
         public void UpdateTarget(Account target)
