@@ -18,7 +18,7 @@ namespace FinantialManager.Domain.PaymentMethods.CreditCards.CommandHandlers
         {
             CreditCard account = _creditCardRepository.GetById(request.Id);
 
-            account = account.UpdateName(request.Name);
+            account.Name = request.Name;
 
             _creditCardRepository.Update(account);
 

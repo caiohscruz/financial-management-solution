@@ -16,7 +16,11 @@ namespace FinantialManager.Domain.PaymentMethods.CreditCards.CommandHandlers
 
         public Task<bool> Handle(CreateCreditCardCommand request, CancellationToken cancellationToken)
         {
-            var creditCard = new CreditCard(name: request.Name, debt: request.Debt);
+            var creditCard = new CreditCard()
+            {
+                Name = request.Name,
+                Debt = request.Debt
+            };
 
             _creditCardRepository.Create(creditCard);
 

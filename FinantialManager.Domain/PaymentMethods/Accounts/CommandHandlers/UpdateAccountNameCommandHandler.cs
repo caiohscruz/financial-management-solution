@@ -18,7 +18,7 @@ namespace FinantialManager.Domain.PaymentMethods.Accounts.CommandHandlers
         {
             Account account = _accountRepository.GetById(request.Id);
 
-            account = account.UpdateName(request.Name);
+            account.Name = request.Name;
 
             _accountRepository.Update(account);
 

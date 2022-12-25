@@ -8,13 +8,9 @@ namespace FinantialManager.Domain.Core.Entitities
 {
     public abstract class Entity
     {
-        public string Id { get; protected set; }
-        protected Entity() { 
-            Id= Guid.NewGuid().ToString();
-        }
-        protected Entity(string id)
-        {
-            Id= id;
-        }
+        public string Id { get; protected set; } = Guid.NewGuid().ToString();
+        public DateTime CreatedAt { get; protected set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; protected set; } = DateTime.Now;
+        
     }
 }

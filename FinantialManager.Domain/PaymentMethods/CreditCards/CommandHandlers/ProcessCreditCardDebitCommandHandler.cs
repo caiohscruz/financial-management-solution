@@ -18,7 +18,7 @@ namespace FinantialManager.Domain.PaymentMethods.CreditCards.CommandHandlers
         {
             CreditCard creditCard = _creditCardRepository.GetById(request.Id);
 
-            creditCard = creditCard.ProcessDebit(request.Amount);
+            creditCard.Debt += request.Amount;
 
             _creditCardRepository.Update(creditCard);
 

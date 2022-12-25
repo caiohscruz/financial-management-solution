@@ -16,7 +16,11 @@ namespace FinantialManager.Domain.PaymentMethods.Accounts.CommandHandlers
 
         public Task<bool> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
         {
-            var account = new Account(name: request.Name, balance: request.Balance);
+            var account = new Account()
+            {
+                Name = request.Name,
+                Balance = request.Balance
+            };
 
             _accountRepository.Create(account);
 

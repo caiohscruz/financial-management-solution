@@ -18,7 +18,7 @@ namespace FinantialManager.Domain.PaymentMethods.Accounts.CommandHandlers
         {
             Account account = _accountRepository.GetById(request.Id);
 
-            account = account.ProcessDebit(request.Amount);
+            account.Balance -= request.Amount;
 
             _accountRepository.Update(account);
 

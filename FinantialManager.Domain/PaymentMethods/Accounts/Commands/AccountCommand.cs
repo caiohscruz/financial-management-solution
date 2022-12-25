@@ -9,8 +9,8 @@ namespace FinantialManager.Domain.PaymentMethods.Accounts.Commands
 {
     public abstract class AccountCommand : Command
     {
-        public string Id { get; protected set; }
-        public string Name { get; protected set; }
+        public string? Id { get; protected set; }
+        public string? Name { get; protected set; }
         public double Balance { get; protected set; }
         public double Amount { get; protected set; }
     }
