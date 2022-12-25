@@ -1,4 +1,4 @@
-using FinantialManager.Domain;
+using FinantialManager.Domain.PaymentMethods.CreditCards.Models;
 
 namespace FinantialManager.DomainTests
 {
@@ -6,56 +6,38 @@ namespace FinantialManager.DomainTests
     public class CreditCardTest
     {
         [DataTestMethod]
-        [DataRow("123", "CreditCard Name")]
-        public void Should_ReturnAnCreditCardWithoutDebt_When_DebtNotInformed(string id, string name)
+        [DataRow("123", "Old Name", 100, "New Name")]
+        public void Should_UpdateCreditCardName_When_UpdateName(string id, string oldName,double balance, string newName)
         {
-            var CreditCard = new CreditCard(id, name);
+            var creditCard = new CreditCard(id, oldName, balance);
 
-            Assert.AreEqual(0, CreditCard.Debt);
+            creditCard = creditCard.UpdateName(newName);
+
+            Assert.AreEqual(newName, creditCard.Name);
         }
 
         [DataTestMethod]
-        [DataRow("123", "CreditCard Name", 50)]
-        public void Should_ReturnAnCreditCardWithoutDebt_When_DebtInformed(string id, string name, double Debt)
+        [DataRow("123", "CreditCard Name", 100, 20)]
+        public void Should_IncreaseCreditCardDebt_When_IncreaseDebt(string id, string name, double balance, double amount)
         {
-            var CreditCard = new CreditCard(id, name, Debt);
+            CreditCard creditCard = new CreditCard(id, name, balance);
+            double newDebt = creditCard.Debt + amount;
 
-            Assert.AreEqual(Debt, CreditCard.Debt);
+            creditCard = creditCard.ProcessDebit(amount);
+
+            Assert.AreEqual(newDebt, creditCard.Debt);
         }
 
         [DataTestMethod]
-        [DataRow("123", "Old Name", "New Name")]
-        public void Should_UpdateCreditCardName_When_UpdateName(string id, string oldName, string newName)
+        [DataRow("123", "CreditCard Name", 100, 20)]
+        public void Should_DecreaseCreditCardDebt_When_DeductDebt(string id, string name, double balance, double amount)
         {
-            var CreditCard = new CreditCard(id, oldName);
+            CreditCard creditCard = new CreditCard(id, name, balance);
+            double newDebt = creditCard.Debt - amount;
 
-            CreditCard.UpdateName(newName);
+            creditCard = creditCard.ProcessCredit(amount);
 
-            Assert.AreEqual(newName, CreditCard.Name);
-        }
-
-        [DataTestMethod]
-        [DataRow("123", "CreditCard Name", 100)]
-        public void Should_IncreaseCreditCardDebt_When_IncreaseDebt(string id, string name, double amount)
-        {
-            CreditCard CreditCard = new CreditCard(id, name);
-            double newDebt = CreditCard.Debt + amount;
-
-            CreditCard.IncreaseDebt(amount);
-
-            Assert.AreEqual(newDebt, CreditCard.Debt);
-        }
-
-        [DataTestMethod]
-        [DataRow("123", "CreditCard Name", 100)]
-        public void Should_DecreaseCreditCardDebt_When_DeductDebt(string id, string name, double amount)
-        {
-            CreditCard CreditCard = new CreditCard(id, name);
-            double newDebt = CreditCard.Debt - amount;
-
-            CreditCard.DeductDebt(amount);
-
-            Assert.AreEqual(newDebt, CreditCard.Debt);
+            Assert.AreEqual(newDebt, creditCard.Debt);
         }
     }
 }

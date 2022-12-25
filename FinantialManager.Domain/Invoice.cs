@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using FinantialManager.Domain.FinantialOpetations.DebitOperations.Models;
+using FinantialManager.Domain.PaymentMethods.CreditCards.Models;
 
 namespace FinantialManager.Domain
 {
@@ -41,14 +43,14 @@ namespace FinantialManager.Domain
         public void AddItem(DebitOperation item)
         {
             _itens.Add(item);
-            _total = +item.Value;
+            _total = +item.Amount;
         }
 
         public void RemoveItem(DebitOperation item)
         {
             // when item is not present
             _itens.Remove(item);
-            _total = -item.Value;
+            _total = -item.Amount;
         }
 
         public void PayOff()
@@ -56,7 +58,7 @@ namespace FinantialManager.Domain
             if (_pendent == true)
             {
                 _pendent = false;
-                _origem.DeductDebt(_total);
+                _origem.ProcessCredit(_total);
             }
         }
 
@@ -65,7 +67,7 @@ namespace FinantialManager.Domain
             if (_pendent == false)
             {
                 _pendent = true;
-                _origem.IncreaseDebt(_total);
+                _origem.ProcessDebit(_total);
             }
         }
     }
